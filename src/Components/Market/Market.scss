@@ -1,0 +1,22 @@
+.market {
+    margin-top: 100px;
+    &__wrapper {
+        padding-left: 130px;
+    }
+    &__items {
+        margin-top: 59px;
+        display: flex;
+        align-items: flex-start;
+        
+    }
+    &__item {
+        width: 236px;
+        margin-right: 24px;
+        .img__container {
+            display: flex;
+            height: 128px;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}

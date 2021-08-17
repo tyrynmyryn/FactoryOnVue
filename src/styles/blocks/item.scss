@@ -1,0 +1,40 @@
+.item {
+    &__img {
+        display: block;
+        margin: 0 auto;
+        filter: drop-shadow(0px 0px 30px $main-color);
+        
+    }
+    &__title {
+        text-align: center;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 32px;
+        color: #fff;
+        margin-top: 25px;
+        
+    }
+    &__cost {
+        margin-top: 5px;
+        text-align: center;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        color: #A3B8CC;
+        span {
+            font-weight: 600;
+        }
+    }
+    &__btn {
+        margin: 0 auto;
+        margin-top: 24px;
+    }
+    &__amount {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 24px;
+        text-align: center;  
+        color: #FFFFFF;
+        margin-top: 15px;
+    }
+}

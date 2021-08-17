@@ -1,0 +1,109 @@
+.pocket {
+    position: relative;
+    margin-top: 106px;
+    &__wrapper {
+        padding-left: calc(106px + 24px);
+    }
+    &__coins {
+        position: absolute;
+        margin-top: 60px;
+        height: 20px;
+        width: 100%;
+    }
+    &__coin {
+        position: absolute;
+        width: 16px;
+        height: 20px;
+        top: 0;
+        left: 0;
+        background: url('../img/pocket/coin.png');
+    }
+    &__total {
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 24px;
+        color: #A3B8CC;
+        margin-top: 20px;
+        span {
+            font-weight: 700;
+        }
+    }
+    &__farm {
+        display: flex;
+        margin-top: 124px;
+        align-items: center;
+    }
+    &__run {
+        color: $main-color;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        transition: .2s all;
+        cursor: pointer;
+        margin-right: 29px;
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 0px;
+            height: 1px;
+            background-color: $main-color;
+            transition: .5s all;
+        }
+        &:hover{
+            &:after {
+                width: 102px;
+            }
+        }
+    }
+    .checkbox {
+        position: relative;
+        display: flex;
+        align-items: center;
+        .run {
+            appearance: none;
+            &:checked + .run-5-text:after {
+                opacity: 1;
+            }
+            &:hover + .run-5-text::before {
+                border: 2px solid #4C5865;
+            }
+            &:disabled + .run-5-text::before {
+                border: 2px solid #333940;
+            }
+        }
+        .run-5-text {
+            cursor: pointer;
+            position: relative;
+            color: #fff;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 24px;
+            padding-left: 30px;
+            &:before {
+                content: '';
+                position: absolute;
+                display: block;
+                width: 22px;
+                height: 22px;
+                border: 2px solid #A3B8CC;
+                top: -2px;
+                left: -6px;
+            }
+            &::after {
+                content: "";
+                opacity: 0;
+                position: absolute;
+                left: 2px;
+                top: 2px;
+                background-color: transparent;
+                width: 7px;
+                border-bottom: 3px solid $main-color;
+                height: 11px;
+                border-right: 3px solid $main-color;
+                transform: rotate(45deg);
+                transition: .2s all;
+            }
+        }
+    }
+}

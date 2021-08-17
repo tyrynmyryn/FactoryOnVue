@@ -1,0 +1,94 @@
+.btn {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    border-radius: 60px;
+    padding: 12px 0 12px 0;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: .2px;
+    a {
+        color: #fff;
+        font-weight: 600;
+        font-size: 16px;
+        letter-spacing: .2px;
+        text-decoration: none;
+    }
+    &_main {
+        background-image: linear-gradient(180deg, $main-color 0%, $main-btn-hover 100%);
+        filter: drop-shadow(0px 8px 10px rgba(0, 0, 0, 0.16));
+        &:hover {
+            background: $main-btn-hover;
+        }
+        &:active {
+            transition: $transition-btn all;
+            background: $main-color;
+        }
+    }
+    &_header {
+        width: 236px;
+        box-shadow: inset 0px 0px 0px 2px $main-color;
+        transition: $transition-btn all;
+        &:hover {
+            box-shadow: none;
+            background: $main-btn-hover;
+        }
+        &:active {
+            background: $main-color;
+        }
+    }
+    &_disabled {
+        background-color: #4C5865;
+        color: #7D90A6;
+    }
+    &_store {
+        width: 200px;
+        border-width: 2px;
+        border-style: solid;
+        border-image: linear-gradient(to, $blue-btn-border, $blue-btn 50%, $blue-btn-border);
+        color: $blue-btn;
+        filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.25));
+        transition: $transition-btn all;
+        &_disabled {
+            border: 2px solid #4C5865;
+            color: #4C5865;
+            background: transparent;
+        }
+        &:hover {
+            color: #212529;
+            background-color: $blue-btn;
+            filter: drop-shadow(0px 10px 40px #1E5466);
+        }
+        &:active {
+            background: transparent;
+            border: 2px solid $blue-btn-border;
+            color: $blue-btn;
+            filter: drop-shadow(0px 10px 40px #1E5466);
+        }
+    }
+    &_prod {
+        width: 236px;
+        font-size: 14px;
+        color: #fff;
+        transition: $transition-btn;
+        box-shadow: inset 0px 0px 0px 2px $main-color;
+        &_disabled {
+            box-shadow: none;
+            width: 236px;
+            font-size: 14px;
+            border: 2px solid #4C5865;
+            color: #4C5865;
+        }
+        &:hover {
+            box-shadow: none;
+            background-color: $main-btn-hover;
+        }
+       &:active {
+           background-color: $main-color;
+       }
+    }
+}

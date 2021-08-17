@@ -1,0 +1,57 @@
+.sidebar {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 24px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #667380;
+    position: absolute;
+    top: 8px;
+    left: 3px;
+    &__header {
+        top: 0;
+        top: 47px;
+        left: 5px;
+    }
+    &__store {
+        top: 11px;
+    }
+    &__prod {
+        top: 12px;
+    }
+    &__scroll {
+        position: absolute;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 24px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #667380;
+        top: 221px;
+        left: -20px;
+        transform: rotate(-90deg);
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 16px;
+            height: 1px;
+            background-color: #667380;
+            top: 50%;
+            left: -28px;
+        }
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: transparent;
+            border-bottom: 1px solid #667380;
+            border-left: 1px solid #667380;
+            transform: rotate(45deg);
+            left: -28px;
+            bottom: 8.6px;
+        }
+    }
+}

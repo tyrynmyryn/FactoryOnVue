@@ -1,0 +1,33 @@
+.header {
+    padding-top: 48px;
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .logo {
+        &__main {
+            position: relative;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: $main-color;
+            clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 50% 50%, 50% 50%, 100% 0%);
+            z-index: -1;
+        }
+        &__circles {
+            display: flex;
+            position: absolute;
+            left: 39px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        &__circle {
+            width: 9px;
+            height: 9px;
+            background-color: $main-color;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+    }
+}
