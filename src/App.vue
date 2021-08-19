@@ -20,6 +20,12 @@
 	:numOfSoul="numOfSoul"
 	@sellDetail="sellDetail"
 	/>
+	<Production
+	:numOfBiomech="numOfBiomech"
+	:numOfProc="numOfProc"
+	:numOfSoul="numOfSoul"
+	@detailsAfterInstall="detailsAfterInstall"
+	/>
 </template>
 
 <script>
@@ -29,10 +35,11 @@ import Promo from './Components/Promo/Promo.vue';
 import Pocket from './Components/Pocket/Pocket.vue';
 import Market from './Components/Market/Market.vue'
 import Store from './Components/Store/Store.vue'
+import Production from './Components/Production/Production.vue'
 
 export default {
 	components: {
-		MainHeader, Promo, Pocket, Market, Store
+		MainHeader, Promo, Pocket, Market, Store, Production
 	},
 	data() {
 		return {
@@ -44,6 +51,10 @@ export default {
 			numOfBiomech: 0,
 			numOfProc: 0,
 			numOfSoul: 0,
+
+			installBiomech: 0,
+            installProc: 0,
+            installSoul: 0
 		}
 	},
 	methods: {
@@ -61,7 +72,6 @@ export default {
 		},
 		changeCheckboxState(status) {
 			this.checkboxState = status;
-			console.log(this.checkboxState)
 		},
 		addTotalCoin() {
 			if (this.checkboxState) {
@@ -79,16 +89,19 @@ export default {
 				this.checkMaxTotalCoins();
 				this.totalCoins -= detailCost
 				this.showCoinsIcon();
+				this.checkStateDetailAfterBuy('.prod__biomech', 'prod__biomech_none', 'prod__biomech_available', this.numOfBiomech, 'prod__biomech_active', this.installBiomech)
 			} else if (name === 'proc') {
 					this.numOfProc++;
 					this.checkMaxTotalCoins();
 					this.totalCoins -= detailCost
 					this.showCoinsIcon();
+					this.checkStateDetailAfterBuy('.prod__proc', 'prod__proc_none', 'prod__proc_available', this.numOfProc, 'prod__proc_active', this.installProc)
 			} else if (name === 'soul') {
 					this.numOfSoul++;
 					this.checkMaxTotalCoins();
 					this.totalCoins -= detailCost
 					this.showCoinsIcon();
+					this.checkStateDetailAfterBuy('.prod__soul', 'prod__soul_none', 'prod__soul_available', this.numOfSoul, 'prod__soul_active', this.installSoul)
 				}
 			}
 		},
@@ -99,6 +112,7 @@ export default {
 					this.totalCoins += detailCost;
 					this.checkMaxTotalCoins();
 					this.showCoinsIcon();
+					this.checkStateDetailAfterSell('.prod__biomech', 'prod__biomech_none', 'prod__biomech_available', this.numOfBiomech, this.installBiomech, 4)
 				}
 			} else if (name === 'proc') {
 				if (this.numOfProc > 0) {
@@ -106,6 +120,7 @@ export default {
 					this.totalCoins += detailCost;
 					this.checkMaxTotalCoins();
 					this.showCoinsIcon();
+					this.checkStateDetailAfterSell('.prod__proc', 'prod__proc_none', 'prod__proc_available', this.numOfProc, this.installProc, 4)
 				} 
 			} else if (name === 'soul') {
 				if (this.numOfSoul > 0) {
@@ -113,6 +128,36 @@ export default {
 					this.totalCoins += detailCost;
 					this.checkMaxTotalCoins();
 					this.showCoinsIcon();
+					this.checkStateDetailAfterSell('.prod__soul', 'prod__soul_none', 'prod__soul_available', this.numOfSoul, this.installSoul, 1)
+				}
+			}
+		},
+		detailsAfterInstall(proc, biomech, soul, installProc, installBiomech, installSoul) {
+			this.numOfProc += proc
+			this.numOfBiomech += biomech
+			this.numOfSoul += soul
+
+            this.installProc = installProc
+			this.installBiomech = installBiomech
+            this.installSoul = installSoul
+		},
+		checkStateDetailAfterBuy(containerName, noneDetail, availableDetail, numOfDetal, activeDetail, numOfInstallDetail) {
+			const container = document.querySelectorAll(containerName)
+			if (numOfDetal + numOfInstallDetail <= 4) {
+				for (let i = 0; i < numOfDetal + numOfInstallDetail; i++) {
+					if (container[i].classList.contains(noneDetail) && !container[i].classList.contains(activeDetail)) {
+						container[i].classList.add(availableDetail)
+					}
+				}
+			}
+		},
+		checkStateDetailAfterSell(containerName, noneDetail, availableDetail, numOfDetail, numOfInstallDetail, iterator) {
+			const container = document.querySelectorAll(containerName)
+				for (let i = 0; i < 4; i++) {
+				if (container[i].classList.contains(availableDetail) && numOfDetail + numOfInstallDetail < iterator) {
+					container[i].classList.remove(availableDetail)
+					container[i].classList.add(noneDetail)
+					break
 				}
 			}
 		}

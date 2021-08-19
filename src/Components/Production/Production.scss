@@ -1,0 +1,119 @@
+.prod {
+    &__wrapper {
+        padding-left: 131px;
+    }
+    &__title {
+        margin-top: 15px;
+    }
+    &__creation {
+        display: flex;
+        margin-top: 82px;
+    }
+    &__descr {
+        margin-right: 44px;
+        .descr__sex {
+            margin-top: 38px;
+        }
+    }
+    .descr__title {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+        color: #FFFFFF;
+    }
+    &__radio {
+        display: flex;
+        width: 212px;
+        justify-content: space-between;
+        padding-left: 2px;
+    }
+
+    &__item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 4px;
+        margin-right: 10px;
+        width: 48px;
+        height: 48px;
+        background-color: #333940;
+        cursor: pointer;
+        &_active {
+            background: none;
+            box-shadow: inset 0px 0px 0px 2px $main-color;
+        }
+    }
+
+    &__biomechs {
+        display: flex;
+    }
+    &__procs {
+        display: flex;
+        margin-top: 16px;
+    }
+    &__souls {
+        margin-top: 16px;
+    }
+    &__biomech {
+        &_none {
+            background: url('../img/prod/details/biomech_none.svg') center center no-repeat;
+            background-color: #333940;
+        }
+        &_available {
+            background: url('../img/prod/details/biomech_available.svg') center center no-repeat;
+            background-color: #333940;
+        }
+        &_active {
+            background: url('../img/prod/details/biomech_active.svg') center center no-repeat;
+            background-color: transparent;
+        }
+    }
+    &__proc {
+        &_none {
+            background: url('../img/prod/details/proc_none.svg') center center no-repeat;
+            background-color: #333940;
+        }
+        &_available {
+            background: url('../img/prod/details/proc_available.svg') center center no-repeat;
+            background-color: #333940;
+        }
+        &_active {
+            background: url('../img/prod/details/proc_active.svg') center center no-repeat;
+            background-color: transparent;
+        }
+    }
+    &__soul {
+        &_none {
+            background: url('../img/prod/details/soul_none.svg') center center no-repeat;
+            background-color: #333940;
+        }
+        &_available {
+            background: url('../img/prod/details/soul_available.svg') center center no-repeat;
+            background-color: #333940;
+        }
+        &_active {
+            background: url('../img/prod/details/soul_active.svg') center center no-repeat;
+            background-color: transparent;
+        }
+    }
+    &__result {
+        height: 320px;
+        position: relative;
+        bottom: 8px;
+        padding-left: 25px;
+    }
+    .create {
+        position: absolute;
+        display: flex;
+        margin-top: 86px;
+        &__descr {
+            width: 195px;
+            min-height: 48px;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 16px;
+            color: #A3B8CC;
+            margin-left: 24px;
+        }
+    }
+}
