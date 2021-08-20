@@ -97,7 +97,7 @@
         }
     }
     &__result {
-        height: 320px;
+        min-height: 320px;
         position: relative;
         bottom: 8px;
         padding-left: 25px;
@@ -105,7 +105,7 @@
     .create {
         position: absolute;
         display: flex;
-        margin-top: 86px;
+        margin-top: 210px;
         &__descr {
             width: 195px;
             min-height: 48px;
@@ -115,5 +115,48 @@
             color: #A3B8CC;
             margin-left: 24px;
         }
+    }
+    .robot {
+        width: 236px;
+        height: 320px;
+    }
+    .front-male_none {
+        background: url('../img/prod/robots/front_male_none.png');
+    }
+    .front-male_available {
+        background: url('../img/prod/robots/front_male_available.png');
+    }
+    .front-male_ready {
+        background: url('../img/prod/robots/front_male_ready.png');
+    }
+    
+    .front-female_none {
+        background: url('../img/prod/robots/front_female_none.png');
+    }
+    .front-female_available {
+        background: url('../img/prod/robots/front_female_available.png');
+    }
+    .front-female_ready {
+        background: url('../img/prod/robots/front_female_ready.png');
+    }
+
+    .design-male_none {
+        background: url('../img/prod/robots/designer_male_none.png');
+    }
+    .design-male_available {
+        background: url('../img/prod/robots/designer_male_available.png');
+    }
+    .design-male_ready {
+        background: url('../img/prod/robots/designer_male_ready.png');
+    }
+
+    .design-female_none {
+        background: url('../img/prod/robots/designer_female_none.png');
+    }
+    .design-female_available {
+        background: url('../img/prod/robots/designer_female_available.png');
+    }
+    .design-female_ready {
+        background: url('../img/prod/robots/designer_female_ready.png');
     }
 }

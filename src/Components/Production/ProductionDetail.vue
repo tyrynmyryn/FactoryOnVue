@@ -20,10 +20,27 @@
             />
         </div>
     </div>
+    <ProductionCreate
+        :descr="descr"
+        :installProc="installProc"
+        :installBiomech="installBiomech"
+        :installSoul="installSoul"
+        :checkType="checkType"
+        :checkSex="checkSex"
+        :totalCoins="totalCoins"
+        :numOfBiomech="numOfBiomech"
+        :numOfProc="numOfProc"
+        :numOfSoul="numOfSoul"
+        @resetActiveDetails="resetActiveDetails"
+    />
 </template>
 
 <script>
+import ProductionCreate from './ProcutionCreate.vue'
 export default {
+    components: {
+        ProductionCreate
+    },
     data() {
         return {
             item: 'prod__item',
@@ -55,7 +72,9 @@ export default {
 
             counterBiomech: 0,
             counterProc: 0,
-            counterSoul: 0
+            counterSoul: 0,
+
+            creationCost: 0
         }
     },
     props: {
@@ -70,13 +89,29 @@ export default {
         numOfSoul: {
             type: Number,
             default: 0
-        }
+        },
+        checkType: {
+            type: Boolean
+        },
+        checkSex: {
+            type: Boolean
+        },
+        totalCoins: {
+            type: Number
+        },
+        descr: {
+            type: Object
+        },
     },
     methods: {
        activeDetail(e) {
            if (e.target.classList.contains(this.availableProc)) {
                e.target.classList.add(this.activeItem, this.activeProc);
-               e.target.classList.remove(this.availableProc)
+               e.target.classList.remove(this.availableProc, this.noneProc)
+               if (this.installProc === 4) {
+                   this.installProc = 0
+                   this.installProc++
+               }
                this.installProc++
                this.counterProc = -1
                this.counterBiomech = 0
@@ -96,7 +131,12 @@ export default {
            if (e.target.classList.contains(this.availableBiomech)) {
                e.target.classList.add(this.activeItem, this.activeBiomech);
                e.target.classList.remove(this.availableBiomech)
-               this.installBiomech++
+               if (this.installBiomech === 4) {
+                   this.installBiomech = 0
+                   this.installBiomech++
+               } else {
+                   this.installBiomech++
+               }
                this.counterBiomech = -1
                 this.counterProc = 0
                 this.counterSoul = 0
@@ -115,7 +155,12 @@ export default {
            if (e.target.classList.contains(this.availableSoul)) {
                e.target.classList.add(this.activeItem, this.activeSoul);
                e.target.classList.remove(this.availableSoul)
-               this.installSoul++
+                if (this.installSoul === 1) {
+                   this.installSoul = 0
+                   this.installSoul++
+               } else {
+                   this.installSoul++
+               }
                this.counterSoul = -1
                this.counterBiomech = 0
                this.counterProc = 0
@@ -133,6 +178,13 @@ export default {
            }
             this.$emit('detailsAfterInstall', this.counterProc, this.counterBiomech, this.counterSoul, this.installProc, this.installBiomech, this.installSoul)
        },
+       resetActiveDetails(creationCost) {
+           this.installBiomech = 0
+            this.installProc = 0
+           this.installSoul = 0
+           this.creationCost = creationCost
+           this.$emit('resetActiveDetails', this.creationCost)
+       }
     },
 }
 </script>

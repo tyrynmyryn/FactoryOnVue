@@ -25,6 +25,8 @@
 	:numOfProc="numOfProc"
 	:numOfSoul="numOfSoul"
 	@detailsAfterInstall="detailsAfterInstall"
+	@resetActiveDetails="resetActiveDetails"
+	:totalCoins="totalCoins"
 	/>
 </template>
 
@@ -89,19 +91,19 @@ export default {
 				this.checkMaxTotalCoins();
 				this.totalCoins -= detailCost
 				this.showCoinsIcon();
-				this.checkStateDetailAfterBuy('.prod__biomech', 'prod__biomech_none', 'prod__biomech_available', this.numOfBiomech, 'prod__biomech_active', this.installBiomech)
+				this.checkStateDetailAfterBuy('.prod__biomech', 'prod__biomech_none', 'prod__biomech_available', this.numOfBiomech, 'prod__biomech_active', this.installBiomech, 4)
 			} else if (name === 'proc') {
 					this.numOfProc++;
 					this.checkMaxTotalCoins();
 					this.totalCoins -= detailCost
 					this.showCoinsIcon();
-					this.checkStateDetailAfterBuy('.prod__proc', 'prod__proc_none', 'prod__proc_available', this.numOfProc, 'prod__proc_active', this.installProc)
+					this.checkStateDetailAfterBuy('.prod__proc', 'prod__proc_none', 'prod__proc_available', this.numOfProc, 'prod__proc_active', this.installProc, 4)
 			} else if (name === 'soul') {
 					this.numOfSoul++;
 					this.checkMaxTotalCoins();
 					this.totalCoins -= detailCost
 					this.showCoinsIcon();
-					this.checkStateDetailAfterBuy('.prod__soul', 'prod__soul_none', 'prod__soul_available', this.numOfSoul, 'prod__soul_active', this.installSoul)
+					this.checkStateDetailAfterBuy('.prod__soul', 'prod__soul_none', 'prod__soul_available', this.numOfSoul, 'prod__soul_active', this.installSoul, 1)
 				}
 			}
 		},
@@ -141,25 +143,30 @@ export default {
 			this.installBiomech = installBiomech
             this.installSoul = installSoul
 		},
-		checkStateDetailAfterBuy(containerName, noneDetail, availableDetail, numOfDetal, activeDetail, numOfInstallDetail) {
+		checkStateDetailAfterBuy(containerName, noneDetail, availableDetail, numOfDetal, activeDetail, numOfInstallDetail, iterator) {
 			const container = document.querySelectorAll(containerName)
-			if (numOfDetal + numOfInstallDetail <= 4) {
-				for (let i = 0; i < numOfDetal + numOfInstallDetail; i++) {
-					if (container[i].classList.contains(noneDetail) && !container[i].classList.contains(activeDetail)) {
+			// if (numOfDetal + numOfInstallDetail <= iterator) {
+				for (let i = 0; i < iterator; i++) {
+					if (container[i].classList.contains(noneDetail) && !container[i].classList.contains(activeDetail) && !container[i].classList.contains(availableDetail)) {
 						container[i].classList.add(availableDetail)
-					}
+					break
 				}
-			}
+				}
+			// }
 		},
 		checkStateDetailAfterSell(containerName, noneDetail, availableDetail, numOfDetail, numOfInstallDetail, iterator) {
 			const container = document.querySelectorAll(containerName)
-				for (let i = 0; i < 4; i++) {
-				if (container[i].classList.contains(availableDetail) && numOfDetail + numOfInstallDetail < iterator) {
+				for (let i = 0; i < iterator; i++) {
+				if (container[i].classList.contains(availableDetail) && numOfDetail < iterator) {
 					container[i].classList.remove(availableDetail)
 					container[i].classList.add(noneDetail)
 					break
 				}
 			}
+		},
+		resetActiveDetails(creationCost) {
+			this.totalCoins += creationCost;
+			this.showCoinsIcon();
 		}
 	}
 }
