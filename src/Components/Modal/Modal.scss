@@ -1,0 +1,85 @@
+.modal{
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: rgba($color: #1A1A1A, $alpha: 0.67);   
+    &__wrapper {
+        position: fixed;
+        width: 496px;
+        height: 240px;
+        background-color: #fff;
+        border-radius: 10px;
+        top: 25%;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1000;
+    }
+    &__title {
+        position: absolute;
+        font-weight: 600;
+        font-size: 32px;
+        line-height: 40px;  
+        color: #212529;
+        top: 33px;
+        left: 106px;
+    }
+    &__descr {
+        width: 306px;
+        position: absolute;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 32px;
+        color: #4C5865;
+        left: 52%;
+        transform: translateX(-50%);
+        bottom: 40px;
+    }
+    &__close {
+        position: absolute;
+        width: 32px;
+        height: 32px;
+        right: 1px;
+        top: 23px;
+        cursor: pointer;
+        &::before {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 16px;
+            height: 2px;
+            background-color: $main-color;
+            transform: rotate(45deg);
+        }
+        &::after {
+            position: absolute;
+            content: '';
+            display: block;
+            width: 16px;
+            height: 2px;
+            background-color: $main-color;
+            transform: rotate(-45deg);
+        }
+    }
+}
+
+.modal_overcoin {
+    &__coin {
+        background: url('../img/modal/modal_coin.png');
+        width: 43px;
+        height: 52px;
+        position: absolute;
+        top: 48px;
+        left: 34px;
+    }
+}
+
+.modal_create {
+    
+    &__title {
+        width: 180px;
+    }
+}

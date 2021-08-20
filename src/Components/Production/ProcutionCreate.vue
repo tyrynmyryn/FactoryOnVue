@@ -194,6 +194,8 @@ export default {
                     e.target.classList.add(this.btnDisabled);
                 this.$emit('resetActiveDetails', this.creationCost)
             }
+            const modalCreate = document.querySelector('.modal_create')
+            modalCreate.style.display = 'block';
         },
     },
     computed: {

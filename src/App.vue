@@ -28,6 +28,7 @@
 	@resetActiveDetails="resetActiveDetails"
 	:totalCoins="totalCoins"
 	/>
+	<Modal/>
 </template>
 
 <script>
@@ -35,13 +36,14 @@
 import MainHeader from './Components/MainHeader/MainHeader.vue';
 import Promo from './Components/Promo/Promo.vue';
 import Pocket from './Components/Pocket/Pocket.vue';
-import Market from './Components/Market/Market.vue'
-import Store from './Components/Store/Store.vue'
-import Production from './Components/Production/Production.vue'
+import Market from './Components/Market/Market.vue';
+import Store from './Components/Store/Store.vue';
+import Production from './Components/Production/Production.vue';
+import Modal from './Components/Modal/Modal.vue';
 
 export default {
 	components: {
-		MainHeader, Promo, Pocket, Market, Store, Production
+		MainHeader, Promo, Pocket, Market, Store, Production, Modal
 	},
 	data() {
 		return {
@@ -67,9 +69,10 @@ export default {
 			}
 		},
 		checkMaxTotalCoins() {
+			const modalOvercoin = document.querySelector('.modal_overcoin')
 			if (this.totalCoins > this.maxTotalCoins) {
-					alert(`Макисмальное количество монет ${this.maxTotalCoins}`);
 					this.totalCoins = this.maxTotalCoins;
+					modalOvercoin.style.display = 'block'
 				}
 		},
 		changeCheckboxState(status) {
@@ -77,7 +80,7 @@ export default {
 		},
 		addTotalCoin() {
 			if (this.checkboxState) {
-				this.totalCoins += 50;
+				this.totalCoins += 5;
 			} else if (!this.checkboxState){
 				this.totalCoins += 1;
 			}
